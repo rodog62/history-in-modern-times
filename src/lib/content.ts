@@ -4,19 +4,20 @@ export const site = {
   lecturer: "Dr. Tim Crain",
   domain: "history-in-modern-times.com",
   email: "tjcrain1@gmail.com",
-  tagline: "Lectures and tours that bring the past to the argument we are still having.",
-  kicker: "A lecture series by Dr. Tim Crain",
+  tagline: "History, argued in the present.",
+  kicker: "Lectures and tours with Dr. Tim Crain",
 };
 
 export const about = {
-  headline: "A historian of memory, faith, and power.",
-  photoNote:
-    "Portrait coming — Tim is sending a photograph for this page, in the same spirit as a classic lecturer’s site.",
+  headline: "Dr. Tim Crain",
+  photoNote: "Portrait forthcoming — the same slot your dad’s site uses for a headshot.",
   paragraphs: [
-    "Dr. Tim Crain is a historian whose work sits at the intersection of Jewish and Christian history, modern conflict, and the stories communities tell about themselves. Raised in an Irish Catholic family, he first encountered the Holocaust as a boy in a Roman Catholic grade school — and could not make the event fit any easy account of the world. That perplexity became a vocation.",
-    "He earned his bachelor’s and master’s degrees at Marquette University and his doctorate at Arizona State University. He later directed the National Catholic Center for Holocaust Education at Seton Hill University, and for fifteen years ran an outreach program in Milwaukee’s Jewish community while teaching as an adjunct at Marquette and the Universities of Wisconsin at Madison and Milwaukee.",
-    "He lectures widely on the history of the Middle East and Europe, on Ireland and the Irish in America, on Churchill, McCarthy, and the American Constitution. The through-line is the same: how the past is never finished with us, and how carefully told history can still change a room.",
+    "I spent the first part of my life as an Irish Catholic boy who could not make the Holocaust fit any easy account of the world. That question — asked in a Roman Catholic grade school — became a vocation: Jewish and Christian history, modern conflict, and the stories communities tell about themselves.",
+    "I earned my bachelor’s and master’s degrees at Marquette University and my doctorate at Arizona State University. I later directed the National Catholic Center for Holocaust Education at Seton Hill University, and for fifteen years ran an outreach program in Milwaukee’s Jewish community while teaching as an adjunct at Marquette and the Universities of Wisconsin at Madison and Milwaukee.",
+    "I lecture on Ireland and the Irish in America, on Churchill, McCarthy, and the American Constitution, and on the long shared history of Judaism, Christianity, and Islam. The lectures are the main work. The tours are a second house.",
   ],
+  quote:
+    "To me, it really didn’t make any sense that something like this could happen.",
   credentials: [
     { label: "Doctorate", value: "Arizona State University" },
     { label: "B.A. & M.A.", value: "Marquette University" },

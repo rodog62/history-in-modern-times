@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Mail } from "lucide-react";
 import { useState, type FormEvent, type ReactNode } from "react";
 import { toast } from "sonner";
-import { GoldRule } from "@/components/gold-rule";
+import { PageIntro, Section, StackCard } from "@/components/page-frame";
+import { Quote } from "@/components/quote";
 import { SiteShell } from "@/components/site-shell";
 import { Button } from "@/components/ui/button";
 import { series, site, tours } from "@/lib/content";
@@ -33,47 +35,55 @@ function ContactPage() {
   }
 
   return (
-    <SiteShell invertedHeader>
-      <section className="border-b border-border bg-navy text-cream">
-        <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20">
-          <p className="font-sans text-[0.65rem] uppercase tracking-[0.28em] text-gold">
-            Correspondence
-          </p>
-          <h1 className="mt-3 font-display text-4xl text-cream sm:text-6xl">
-            Inquire
-          </h1>
-          <GoldRule className="mt-6" />
-          <p className="mt-5 max-w-xl text-cream/75">
-            Book a talk, join a tour, or ask about a series. Mail also reaches{" "}
-            <a className="text-gold underline-offset-4 hover:underline" href={`mailto:${site.email}`}>
-              {site.email}
-            </a>
-            .
-          </p>
+    <SiteShell>
+      <Section>
+        <PageIntro label="Get in touch" title="Let’s talk">
+          <Quote className="mt-8">
+            “Book a lecture, join a tour, or ask about a series. I’d be glad to
+            hear from you.”
+          </Quote>
+        </PageIntro>
+        <p>
+          Whether you want Dr. Crain to speak, want a seat on a tour, or have a
+          question about a series, write here or mail{" "}
+          <a
+            className="font-medium text-navy hover:text-gold"
+            href={`mailto:${site.email}`}
+          >
+            {site.email}
+          </a>
+          .
+        </p>
+        <div className="mt-8 mb-10 flex items-center gap-3 text-[0.95rem] text-navy">
+          <Mail className="size-5 text-muted" />
+          <a className="hover:text-gold" href={`mailto:${site.email}`}>
+            {site.email}
+          </a>
         </div>
-      </section>
 
-      <section className="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:px-6 sm:py-16 lg:grid-cols-[1fr_0.8fr]">
         {sent ? (
-          <div className="border border-border bg-parchment p-8">
-            <h2 className="font-display text-3xl text-navy">Received.</h2>
-            <p className="mt-3 text-muted">
-              In this prototype the note is stored on your device so we can
-              show Tim the flow. Live email comes in a later pass.
+          <StackCard>
+            <h2 className="font-display text-3xl font-normal text-navy">
+              Received.
+            </h2>
+            <p className="mt-3">
+              In this prototype the note is stored on your device so we can show
+              Tim the flow. Live email comes in a later pass.
             </p>
-          </div>
+          </StackCard>
         ) : (
-          <form onSubmit={onSubmit} className="space-y-4">
-            <Field label="Name" htmlFor="name">
+          <form onSubmit={onSubmit}>
+            <Field label="Your name" htmlFor="name">
               <input
                 id="name"
                 required
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 className={fieldClass}
+                placeholder="Your name"
               />
             </Field>
-            <Field label="Email" htmlFor="email">
+            <Field label="Email address" htmlFor="email">
               <input
                 id="email"
                 type="email"
@@ -81,6 +91,7 @@ function ContactPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className={fieldClass}
+                placeholder="you@example.com"
               />
             </Field>
             <Field label="Regarding" htmlFor="topic">
@@ -88,7 +99,7 @@ function ContactPage() {
                 id="topic"
                 value={topic}
                 onChange={(e) => setTopic(e.target.value)}
-                className={fieldClass}
+                className={`${fieldClass} appearance-auto bg-white leading-normal`}
               >
                 <option value="general">A general question</option>
                 <option value="booking">Booking Dr. Crain to speak</option>
@@ -111,30 +122,22 @@ function ContactPage() {
                 rows={6}
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                className={`${fieldClass} py-3`}
+                className={`${fieldClass} min-h-40 py-3`}
+                placeholder="Tell me what you’re working on…"
               />
             </Field>
-            <Button type="submit" variant="navy" size="lg">
-              Send inquiry
+            <Button type="submit" size="lg" className="mt-2">
+              Send message
             </Button>
           </form>
         )}
-
-        <aside className="h-fit bg-parchment p-6 shadow-[var(--shadow-border)] sm:p-8">
-          <h2 className="font-display text-2xl text-navy">What this form is for</h2>
-          <ul className="mt-4 space-y-3 text-sm text-muted">
-            <li>Joining an Ireland tour as it is recruited.</li>
-            <li>Asking a club or parish to host a lecture.</li>
-            <li>Purchasing a series once checkout is connected.</li>
-          </ul>
-        </aside>
-      </section>
+      </Section>
     </SiteShell>
   );
 }
 
 const fieldClass =
-  "mt-1.5 h-11 w-full border border-border bg-parchment px-3 font-sans text-sm text-ink outline-none ring-gold/60 focus:ring-2";
+  "mt-2 h-12 w-full rounded-sm border border-border bg-white px-4 font-sans text-[0.95rem] leading-none text-navy outline-none transition-colors duration-200 placeholder:text-muted/50 focus:border-gold";
 
 function Field({
   label,
@@ -146,8 +149,8 @@ function Field({
   children: ReactNode;
 }) {
   return (
-    <label htmlFor={htmlFor} className="block">
-      <span className="font-sans text-xs uppercase tracking-[0.18em] text-muted">
+    <label htmlFor={htmlFor} className="mb-6 block">
+      <span className="font-sans text-[0.7rem] font-semibold uppercase tracking-btn text-muted">
         {label}
       </span>
       {children}

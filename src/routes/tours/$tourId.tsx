@@ -1,6 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { MapPin } from "lucide-react";
-import { GoldRule } from "@/components/gold-rule";
+import { PageIntro, Section, StackCard } from "@/components/page-frame";
 import { SiteShell } from "@/components/site-shell";
 import { Button } from "@/components/ui/button";
 import { getTour } from "@/lib/content";
@@ -15,68 +15,58 @@ function TourPage() {
   if (!item) throw notFound();
 
   return (
-    <SiteShell invertedHeader>
-      <section className="relative isolate overflow-hidden bg-navy text-cream">
-        <img
-          src={item.image}
-          alt=""
-          className="absolute inset-0 size-full object-cover opacity-40"
-        />
-        <div className="absolute inset-0 bg-navy/70" />
-        <div className="relative mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20">
-          <p className="font-sans text-[0.65rem] uppercase tracking-[0.28em] text-gold">
-            Tour
-          </p>
-          <h1 className="mt-3 max-w-3xl font-display text-4xl text-cream sm:text-6xl">
-            {item.title}
-          </h1>
-          <p className="mt-4 inline-flex items-center gap-1.5 text-cream/80">
+    <SiteShell>
+      <Section>
+        <PageIntro label="Tour" title={item.title}>
+          <p className="mt-4 inline-flex items-center gap-1.5">
             <MapPin className="size-4" />
             {item.place}
           </p>
-          <GoldRule className="mt-6" />
-          <p className="mt-5 max-w-2xl text-cream/80">{item.blurb}</p>
-          <div className="mt-8">
-            <Button asChild>
-              <Link to="/contact" search={{ topic: item.id }}>
-                Inquire about this tour
-              </Link>
-            </Button>
-          </div>
+          <p className="mt-4">{item.blurb}</p>
+        </PageIntro>
+        <img
+          src={item.image}
+          alt=""
+          className="mb-10 aspect-video w-full rounded-lg object-cover"
+        />
+        <div className="mb-10">
+          <Button asChild>
+            <Link to="/contact" search={{ topic: item.id }}>
+              Inquire about this tour
+            </Link>
+          </Button>
         </div>
-      </section>
-
-      <section className="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:px-6 sm:py-16 lg:grid-cols-2">
-        <div>
-          <h2 className="font-display text-3xl text-navy">On the ground</h2>
-          <ul className="mt-6 space-y-3">
-            {item.details.map((line) => (
-              <li
-                key={line}
-                className="border-l-2 border-gold pl-4 text-sm leading-relaxed text-muted"
-              >
-                {line}
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="bg-parchment p-6 shadow-[var(--shadow-border)] sm:p-8">
-          <h2 className="font-display text-3xl text-navy">Shape of the days</h2>
-          <ol className="mt-6 space-y-5">
-            {item.itinerary.map((stop) => (
-              <li key={stop.title}>
-                <p className="font-sans text-[0.65rem] uppercase tracking-[0.2em] text-gold-deep">
+        <h2 className="font-display text-[1.75rem] font-medium text-navy">
+          On the ground
+        </h2>
+        <ul className="mt-6 space-y-5">
+          {item.details.map((line) => (
+            <li key={line}>
+              <StackCard>
+                <p className="text-[0.95rem]">{line}</p>
+              </StackCard>
+            </li>
+          ))}
+        </ul>
+        <h2 className="mt-12 font-display text-[1.75rem] font-medium text-navy">
+          Shape of the days
+        </h2>
+        <ol className="mt-6 space-y-5">
+          {item.itinerary.map((stop) => (
+            <li key={stop.title}>
+              <StackCard>
+                <p className="font-sans text-xs font-semibold uppercase tracking-label text-gold">
                   {stop.day}
                 </p>
-                <p className="mt-1 font-display text-xl text-navy">
+                <p className="mt-2 font-display text-[1.35rem] font-medium text-navy">
                   {stop.title}
                 </p>
-                <p className="mt-1 text-sm text-muted">{stop.note}</p>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
+                <p className="mt-2 text-[0.95rem]">{stop.note}</p>
+              </StackCard>
+            </li>
+          ))}
+        </ol>
+      </Section>
     </SiteShell>
   );
 }

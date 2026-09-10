@@ -4,6 +4,8 @@ Prototype site for **Dr. Tim Crain** — lecture series (primary) and historical
 
 Built for Rohan to iterate with Tim. Copy, portrait, prices, and lecture files are placeholders until Tim sends the official script, photo, and videos.
 
+Visual structure follows Rob Crain’s [Nasc Consulting](https://nascconsulting.com) site (centered hero, circular portrait slot, stacked cards, outline buttons) with Tim’s navy / off-white / muted gold palette.
+
 ## What’s in this prototype
 
 - Navy / off-white / muted gold palette (Tim’s brief)
@@ -15,7 +17,7 @@ Built for Rohan to iterate with Tim. Copy, portrait, prices, and lecture files a
 
 ## Swap-in checklist (when Tim sends files)
 
-1. Portrait → `public/images/portrait.jpg` and the About figure
+1. Portrait → circular headshot slot on the homepage and About
 2. Homepage script → hero copy in `src/routes/index.tsx` and `src/lib/content.ts`
 3. Sample lecture video → replace `public/videos/sample-lecture.mp4`
 4. Series / episode copy and prices → `src/lib/content.ts`

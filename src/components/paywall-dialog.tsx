@@ -38,26 +38,26 @@ export function PaywallDialog({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-end justify-center bg-navy-deep/70 p-0 sm:items-center sm:p-6"
+      className="fixed inset-0 z-50 flex items-end justify-center bg-navy/60 p-0 sm:items-center sm:p-6"
       role="dialog"
       aria-modal="true"
       aria-labelledby="paywall-title"
       onClick={onClose}
     >
       <div
-        className="w-full max-w-lg bg-cream p-6 shadow-[var(--shadow-border)] sm:p-8"
+        className="w-full max-w-lg rounded-lg bg-white p-6 sm:p-8"
         onClick={(e) => e.stopPropagation()}
       >
-        <p className="font-sans text-[0.65rem] uppercase tracking-[0.28em] text-gold-deep">
+        <p className="font-sans text-xs font-semibold uppercase tracking-label text-gold">
           Series paywall
         </p>
         <h2
           id="paywall-title"
-          className="mt-2 font-display text-3xl text-navy"
+          className="mt-2 font-display text-3xl font-normal text-navy"
         >
           {series.title}
         </h2>
-        <p className="mt-3 text-sm leading-relaxed text-muted">
+        <p className="mt-3 text-[0.95rem]">
           The sample lecture on the main page is free. The rest of this series
           will sit behind a purchase — {series.episodes.length} lectures for{" "}
           {seriesPriceLabel(series.price)}. Checkout is not wired yet; leave an
@@ -75,7 +75,7 @@ export function PaywallDialog({
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Email for when purchase opens"
-            className="h-11 min-h-11 flex-1 border border-border bg-parchment px-3 font-sans text-sm text-ink outline-none ring-gold/60 focus:ring-2"
+            className="h-12 min-h-11 flex-1 rounded-sm border border-border bg-white px-4 font-sans text-[0.95rem] text-navy outline-none placeholder:text-muted/50 focus:border-gold"
           />
           <Button type="submit" variant="navy" className="shrink-0">
             <Lock className="size-3.5" />
@@ -84,7 +84,7 @@ export function PaywallDialog({
         </form>
 
         <div className="mt-5 flex flex-col gap-2 border-t border-border pt-5 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-xs text-muted">Prototype preview</p>
+          <p className="text-xs">Prototype preview</p>
           <div className="flex gap-2">
             <Button type="button" variant="ghostInk" onClick={onClose}>
               Close

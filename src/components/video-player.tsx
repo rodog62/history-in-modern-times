@@ -56,7 +56,7 @@ export function VideoPlayer({
   const pct = duration > 0 ? (progress / duration) * 100 : 0;
 
   return (
-    <figure className="overflow-hidden bg-navy-deep shadow-[var(--shadow-border)]">
+    <figure className="overflow-hidden rounded-lg bg-navy-deep">
       <div className="relative aspect-video bg-navy-deep">
         <video
           ref={videoRef}
@@ -76,7 +76,7 @@ export function VideoPlayer({
           )}
           aria-label={playing ? "Pause" : `Play ${title}`}
         >
-          <span className="flex size-16 items-center justify-center rounded-full bg-gold text-navy-deep shadow-lg sm:size-[4.5rem]">
+          <span className="flex size-16 items-center justify-center rounded-full bg-gold text-navy-deep sm:size-[4.5rem]">
             {playing ? (
               <Pause className="size-7 fill-current" />
             ) : (
@@ -102,9 +102,7 @@ export function VideoPlayer({
           />
           <div className="mt-1.5 flex justify-between font-sans text-[0.7rem] tabular-nums tracking-wide text-cream/70">
             <span>{formatTime(progress)}</span>
-            <span style={{ width: 0, height: 0, overflow: "hidden" }}>
-              {pct.toFixed(0)}
-            </span>
+            <span className="sr-only">{pct.toFixed(0)}</span>
             <span>{formatTime(duration)}</span>
           </div>
         </div>
