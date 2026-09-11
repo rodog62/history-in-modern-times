@@ -3,7 +3,6 @@ import { Mail } from "lucide-react";
 import { useState, type FormEvent, type ReactNode } from "react";
 import { toast } from "sonner";
 import { PageIntro, Section, StackCard } from "@/components/page-frame";
-import { Quote } from "@/components/quote";
 import { SiteShell } from "@/components/site-shell";
 import { Button } from "@/components/ui/button";
 import { series, site, tours } from "@/lib/content";
@@ -23,7 +22,7 @@ function ContactPage() {
   const addInquiry = usePurchases((s) => s.addInquiry);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [topic, setTopic] = useState(topicFromSearch ?? "general");
+  const [topic, setTopic] = useState(topicFromSearch ?? "booking");
   const [message, setMessage] = useState("");
   const [sent, setSent] = useState(false);
 
@@ -38,23 +37,18 @@ function ContactPage() {
     <SiteShell>
       <Section>
         <PageIntro label="Get in touch" title="Let’s talk">
-          <Quote className="mt-8">
-            “Book a lecture, join a tour, or ask about a series. I’d be glad to
-            hear from you.”
-          </Quote>
+          <p className="mt-4">
+            Book a lecture, join a tour, or ask a question. Mail also reaches{" "}
+            <a
+              className="font-medium text-navy hover:text-gold"
+              href={`mailto:${site.email}`}
+            >
+              {site.email}
+            </a>
+            .
+          </p>
         </PageIntro>
-        <p>
-          Whether you want Dr. Crain to speak, want a seat on a tour, or have a
-          question about a series, write here or mail{" "}
-          <a
-            className="font-medium text-navy hover:text-gold"
-            href={`mailto:${site.email}`}
-          >
-            {site.email}
-          </a>
-          .
-        </p>
-        <div className="mt-8 mb-10 flex items-center gap-3 text-[0.95rem] text-navy">
+        <div className="mt-2 mb-10 flex items-center gap-3 text-[0.95rem] text-navy">
           <Mail className="size-5 text-muted" />
           <a className="hover:text-gold" href={`mailto:${site.email}`}>
             {site.email}
@@ -67,8 +61,8 @@ function ContactPage() {
               Received.
             </h2>
             <p className="mt-3">
-              In this prototype the note is stored on your device so we can show
-              Tim the flow. Live email comes in a later pass.
+              In this prototype the note is stored on this device. Live email
+              comes in a later pass.
             </p>
           </StackCard>
         ) : (
@@ -101,11 +95,11 @@ function ContactPage() {
                 onChange={(e) => setTopic(e.target.value)}
                 className={`${fieldClass} appearance-auto bg-white leading-normal`}
               >
-                <option value="general">A general question</option>
                 <option value="booking">Booking Dr. Crain to speak</option>
+                <option value="general">A general question</option>
                 {series.map((s) => (
                   <option key={s.id} value={s.id}>
-                    Series: {s.title}
+                    Lecture: {s.title}
                   </option>
                 ))}
                 {tours.map((t) => (

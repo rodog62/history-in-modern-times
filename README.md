@@ -1,31 +1,21 @@
 # History in Modern Times
 
-Prototype site for **Dr. Tim Crain** — lecture series (primary) and historical tours (separate). Domain: [history-in-modern-times.com](https://history-in-modern-times.com).
+Prototype site for **Dr. Tim Crain** — lectures (primary) and historical tours (separate). Domain: [history-in-modern-times.com](https://history-in-modern-times.com).
 
-Built for Rohan to iterate with Tim. Copy, portrait, prices, and lecture files are placeholders until Tim sends the official script, photo, and videos.
+Visual structure follows Rob Crain’s [Nasc Consulting](https://nascconsulting.com) site with Tim’s navy / off-white / muted gold palette.
 
-Visual structure follows Rob Crain’s [Nasc Consulting](https://nascconsulting.com) site (centered hero, circular portrait slot, stacked cards, outline buttons) with Tim’s navy / off-white / muted gold palette.
+Copy and portrait are from Tim (Sep 2026): official website bio and headshot. Recorded lecture series are not online yet and will be added later.
 
 ## What’s in this prototype
 
-- Navy / off-white / muted gold palette (Tim’s brief)
-- Homepage with a **sample lecture** player
-- Lecture catalog with per-series paywall (purchase is a waitlist + preview unlock until checkout is wired)
-- Tours as a second, independent section (Ireland recruiting; Milwaukee waitlist)
-- About page drafted from public biographical notes (Marquette, ASU, NCCHE, Milwaukee lectures)
+- Navy / off-white / muted gold
+- Circular headshot and Tim’s biography
+- Lecture subjects for booking (no paywall until recordings exist)
+- Tours as a second, independent section
 - Contact / inquiry form
 
-## Swap-in checklist (when Tim sends files)
+## Later
 
-1. Portrait → circular headshot slot on the homepage and About
-2. Homepage script → hero copy in `src/routes/index.tsx` and `src/lib/content.ts`
-3. Sample lecture video → replace `public/videos/sample-lecture.mp4`
-4. Series / episode copy and prices → `src/lib/content.ts`
-5. Real checkout (Stripe) and email later
-
-## Local
-
-```bash
-npm install
-npm run dev
-```
+1. Recorded lecture files and a sample on the homepage
+2. Series checkout (Stripe)
+3. Live email on the contact form

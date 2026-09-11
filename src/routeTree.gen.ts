@@ -18,7 +18,6 @@ import { Route as LecturesIndexRouteImport } from './routes/lectures/index'
 import { Route as LecturesSeriesIdRouteImport } from './routes/lectures/$seriesId'
 import { Route as ToursIndexRouteImport } from './routes/tours/index'
 import { Route as ToursTourIdRouteImport } from './routes/tours/$tourId'
-import { Route as LecturesSeriesIdEpisodeIdRouteImport } from './routes/lectures/$seriesId_.$episodeId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -65,12 +64,6 @@ const ToursTourIdRoute = ToursTourIdRouteImport.update({
   path: '/$tourId',
   getParentRoute: () => ToursRouteRoute,
 } as any)
-const LecturesSeriesIdEpisodeIdRoute =
-  LecturesSeriesIdEpisodeIdRouteImport.update({
-    id: '/$seriesId_/$episodeId',
-    path: '/$seriesId/$episodeId',
-    getParentRoute: () => LecturesRouteRoute,
-  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -82,7 +75,6 @@ export interface FileRoutesByFullPath {
   '/tours/$tourId': typeof ToursTourIdRoute
   '/lectures/': typeof LecturesIndexRoute
   '/tours/': typeof ToursIndexRoute
-  '/lectures/$seriesId/$episodeId': typeof LecturesSeriesIdEpisodeIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -92,7 +84,6 @@ export interface FileRoutesByTo {
   '/tours/$tourId': typeof ToursTourIdRoute
   '/lectures': typeof LecturesIndexRoute
   '/tours': typeof ToursIndexRoute
-  '/lectures/$seriesId/$episodeId': typeof LecturesSeriesIdEpisodeIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -105,7 +96,6 @@ export interface FileRoutesById {
   '/tours/$tourId': typeof ToursTourIdRoute
   '/lectures/': typeof LecturesIndexRoute
   '/tours/': typeof ToursIndexRoute
-  '/lectures/$seriesId_/$episodeId': typeof LecturesSeriesIdEpisodeIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -119,7 +109,6 @@ export interface FileRouteTypes {
     | '/tours/$tourId'
     | '/lectures/'
     | '/tours/'
-    | '/lectures/$seriesId/$episodeId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -129,7 +118,6 @@ export interface FileRouteTypes {
     | '/tours/$tourId'
     | '/lectures'
     | '/tours'
-    | '/lectures/$seriesId/$episodeId'
   id:
     | '__root__'
     | '/'
@@ -141,7 +129,6 @@ export interface FileRouteTypes {
     | '/tours/$tourId'
     | '/lectures/'
     | '/tours/'
-    | '/lectures/$seriesId_/$episodeId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -217,26 +204,17 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ToursTourIdRouteImport
       parentRoute: typeof ToursRouteRoute
     }
-    '/lectures/$seriesId_/$episodeId': {
-      id: '/lectures/$seriesId_/$episodeId'
-      path: '/$seriesId/$episodeId'
-      fullPath: '/lectures/$seriesId/$episodeId'
-      preLoaderRoute: typeof LecturesSeriesIdEpisodeIdRouteImport
-      parentRoute: typeof LecturesRouteRoute
-    }
   }
 }
 
 interface LecturesRouteRouteChildren {
   LecturesSeriesIdRoute: typeof LecturesSeriesIdRoute
   LecturesIndexRoute: typeof LecturesIndexRoute
-  LecturesSeriesIdEpisodeIdRoute: typeof LecturesSeriesIdEpisodeIdRoute
 }
 
 const LecturesRouteRouteChildren: LecturesRouteRouteChildren = {
   LecturesSeriesIdRoute: LecturesSeriesIdRoute,
   LecturesIndexRoute: LecturesIndexRoute,
-  LecturesSeriesIdEpisodeIdRoute: LecturesSeriesIdEpisodeIdRoute,
 }
 
 const LecturesRouteRouteWithChildren = LecturesRouteRoute._addFileChildren(
